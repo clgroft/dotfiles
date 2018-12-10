@@ -21,3 +21,8 @@ git clone git@github.com:clgroft/dotfiles.git
 cd dotfiles
 stow base
 ```
+Within `nvim`/VimR (don't worry about "can't find theme" the first time):
+```
+:call minpac#update()
+```
+and restart the editor.
