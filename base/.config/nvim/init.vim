@@ -39,6 +39,11 @@ call minpac#add('sheerun/vim-polyglot')
 " Highlight and :FixWhitespace
 call minpac#add('bronson/vim-trailing-whitespace')
 
+" Rainbow delimiters (easier to pick out matching delimiters)
+" I leave this off by default, but may change my mind
+" if I start doing Lisp development
+call minpac#add('luochen1990/rainbow')
+
 " Navigation
 " ----------
 
@@ -81,13 +86,15 @@ call minpac#add('tpope/vim-sleuth')
 " Easier to create text objects; dependency of vim-textobj-rubyblock
 call minpac#add('kana/vim-textobj-user')
 
+" Code editing
+" ------------
+
 " Autocomplete
-call minpac#add('Shougo/deoplete.nvim')
+" call minpac#add('Shougo/deoplete.nvim')
 " Make <tab> do the right thing wrt autocomplete lists
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-
-" Linting
-" -------
+" Linting/autocomplete/etc.
+let g:ale_completion_enabled = 1
 call minpac#add('w0rp/ale')
 
 " File handling
@@ -123,7 +130,7 @@ call minpac#add('slim-template/vim-slim')
 call minpac#add('tpope/vim-dadbod')
 " r indicates current Ruby block
 call minpac#add('nelstrom/vim-textobj-rubyblock')
-call minpac#add('fishbullet/deoplete-ruby')
+" call minpac#add('fishbullet/deoplete-ruby')
 
 " JS/React
 " --------
@@ -132,7 +139,7 @@ call minpac#add('fishbullet/deoplete-ruby')
 call minpac#add('pangloss/vim-javascript')
 let g:javascript_plugin_flow = 1
 " Flow autocomplete for deoplete
-call minpac#add('wokalski/autocomplete-flow')
+" call minpac#add('wokalski/autocomplete-flow')
 " call minpac#add('Shougo/neosnippet')
 " call minpac#add('Shougo/neosnippet-snippets')
 " let g:neosnippet#enable_completed_snippet = 1
@@ -143,10 +150,10 @@ call minpac#add('mxw/vim-jsx')
 call minpac#add('mattn/emmet-vim')
 let g:user_emmet_leader_key='<Tab>'
 let g:user_emmet_settings = {
-  \  'javascript.jsx' : {
-    \      'extends' : 'jsx',
-    \  },
-  \}
+\  'javascript.jsx' : {
+\      'extends' : 'jsx',
+\  },
+\}
 
 " JSON
 " ----
