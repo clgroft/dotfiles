@@ -43,6 +43,7 @@ call minpac#add('bronson/vim-trailing-whitespace')
 " I leave this off by default, but may change my mind
 " if I start doing Lisp development
 call minpac#add('luochen1990/rainbow')
+let g:rainbow_active = 0
 
 " Navigation
 " ----------
