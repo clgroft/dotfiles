@@ -97,6 +97,8 @@ inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 " Linting/autocomplete/etc.
 let g:ale_completion_enabled = 1
 call minpac#add('w0rp/ale')
+" Fix runaway autocomplete
+set completeopt=menu,menuone,preview,noselect,noinsert
 
 " File handling
 " -------------
