@@ -1,7 +1,7 @@
 # dotfiles (WIP)
 Example setup for macOS, zsh, VimR
 
-## Manual installs
+## Manual installs (incomplete)
 
 * [Homebrew](https://brew.sh/)
 * [fzf](https://github.com/junegunn/fzf): `brew install fzf && $(brew --prefix)/opt/fzf/install`
