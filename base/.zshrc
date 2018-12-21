@@ -49,7 +49,7 @@ else
   export EDITOR='nvim' # vimr isn't quite working the way I want
 fi
 
-source ~/.iterm2_shell_integration.zsh
+[ -f ~/.iterm2_shell_integration.zsh ] && source ~/.iterm2_shell_integration.zsh
 
 export NVM_DIR="$HOME/.nvm"
 source /usr/local/opt/nvm/nvm.sh
