@@ -40,6 +40,7 @@ plugins=(
   vi-mode
   web-search
   yarn
+  zsh_reload
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -63,8 +64,12 @@ fi
 
 [ -f ~/.iterm2_shell_integration.zsh ] && source ~/.iterm2_shell_integration.zsh
 
-export NVM_DIR="$HOME/.nvm"
-source /usr/local/opt/nvm/nvm.sh
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
+if [ -f /usr/local/opt/nvm/nvm.sh ]; then
+  export NVM_DIR="$HOME/.nvm"
+  source /usr/local/opt/nvm/nvm.sh
+fi
 
 export PATH="$PATH:$HOME/.cabal/bin"
 export PATH="$PATH:$HOME/.local/bin"
