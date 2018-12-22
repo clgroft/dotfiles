@@ -3,9 +3,11 @@ export ZSH=~/.oh-my-zsh
 ZSH_THEME="powerlevel9k/powerlevel9k"
 POWERLEVEL9K_MODE='nerdfont-complete'
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(vi_mode context dir rvm vcs)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(vi_mode context dir rbenv rvm vcs)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(\
-  status load root_indicator background_jobs command_execution_time time)
+  status load root_indicator background_jobs command_execution_time history\
+  time)
+POWERLEVEL9K_COMMAND_EXECUTION_TIME_THRESHOLD=0
 POWERLEVEL9K_SHORTEN_DIR_LENGTH=0
 POWERLEVEL9K_SHORTEN_STRATEGY=truncate_with_package_name
 POWERLEVEL9K_DIR_SHOW_WRITABLE=true
@@ -14,14 +16,24 @@ POWERLEVEL9K_RVM_FOREGROUND="white"
 plugins=(
   bgnotify
   brew
+  cabal
+  common-aliases
   colored-man-pages
   command-not-found
   dotenv
   encode64
+  gem
   git
+  git-extras
+  gitfast
+  github
+  golang
   httpie
   jira
   nvm
+  pip
+  pylint
+  python
   rails
   ruby
   tmux
