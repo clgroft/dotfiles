@@ -162,6 +162,10 @@ let g:user_emmet_settings = {
 " ----
 call minpac#add('leshill/vim-json')
 
+" Haskell
+" -------
+call minpac#add('parsonsmatt/intero-neovim')
+
 " Highlight the column just past maximum line length
 set cc=+1
 
