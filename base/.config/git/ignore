@@ -8,3 +8,9 @@
 
 # Solargraph
 .solargraph.yml
+
+# Clojure
+.cljs_rhino_repl/**
+
+# Python bytecode
+*.pyc
