@@ -1,7 +1,10 @@
 # zmodload zsh/zprof
 
 export ZSH=~/.oh-my-zsh
+
 ZSH_THEME="spaceship"
+SPACESHIP_TIME_SHOW=true
+SPACESHIP_EXIT_CODE_SHOW=true
 
 plugins=(
   bgnotify
