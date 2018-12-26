@@ -1,3 +1,5 @@
+# zmodload zsh/zprof
+
 source /usr/local/share/antigen/antigen.zsh
 
 POWERLEVEL9K_INSTALLATION_PATH=$ANTIGEN_BUNDLES/bhilburn/powerlevel9k
@@ -50,3 +52,5 @@ export PATH="$PATH:$HOME/bin"
 export PATH="$PATH:$HOME/.rvm/bin"
 alias gacm="gaa && gcmsg"
 alias exa="exa -lh --git"
+
+# zprof
