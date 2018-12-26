@@ -86,6 +86,8 @@ call minpac#add('tomtom/tcomment_vim')
 call minpac#add('tpope/vim-sleuth')
 " Easier to create text objects; dependency of vim-textobj-rubyblock
 call minpac#add('kana/vim-textobj-user')
+" Create text objects for code comments (ic, ac, aC)
+call minpac#add('glts/vim-textobj-comment')
 
 " Code editing
 " ------------
