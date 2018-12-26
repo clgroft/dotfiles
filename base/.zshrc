@@ -1,8 +1,7 @@
 # zmodload zsh/zprof
 
-source /usr/local/share/antigen/antigen.zsh
+export ZSH=~/.oh-my-zsh
 
-POWERLEVEL9K_INSTALLATION_PATH=$ANTIGEN_BUNDLES/bhilburn/powerlevel9k
 ZSH_THEME="powerlevel9k/powerlevel9k"
 POWERLEVEL9K_MODE='nerdfont-complete'
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
@@ -16,12 +15,47 @@ POWERLEVEL9K_SHORTEN_STRATEGY=truncate_with_package_name
 POWERLEVEL9K_DIR_SHOW_WRITABLE=true
 POWERLEVEL9K_RVM_FOREGROUND="white"
 
-antigen init .antigenrc
+plugins=(
+  bgnotify
+  brew
+  cabal
+  common-aliases
+  colored-man-pages
+  command-not-found
+  dotenv
+  encode64
+  gem
+  git
+  git-extras
+  gitfast
+  github
+  golang
+  httpie
+  jira
+  nvm
+  pip
+  pylint
+  python
+  rails
+  ruby
+  tmux
+  vi-mode
+  web-search
+  yarn
+  zsh_reload
+)
+
+source $ZSH/oh-my-zsh.sh
 
 eval $(thefuck --alias)
 eval $(brew command-not-found-init)
 
 # User configuration
+
+# export MANPATH="/usr/local/man:$MANPATH"
+
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
@@ -52,5 +86,9 @@ export PATH="$PATH:$HOME/bin"
 export PATH="$PATH:$HOME/.rvm/bin"
 alias gacm="gaa && gcmsg"
 alias exa="exa -lh --git"
+
+source /usr/local/share/zsh-navigation-tools/zsh-navigation-tools.plugin.zsh
+source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # zprof
