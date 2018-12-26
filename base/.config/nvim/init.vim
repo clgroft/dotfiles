@@ -164,6 +164,8 @@ call minpac#add('leshill/vim-json')
 
 " Haskell
 " -------
+call minpac#add('neovimhaskell/haskell-vim')
+call minpac#add('alx741/vim-hindent')
 call minpac#add('parsonsmatt/intero-neovim')
 
 " Highlight the column just past maximum line length
