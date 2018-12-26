@@ -1,0 +1,39 @@
+antigen use oh-my-zsh
+
+antigen bundles <<EOBUNDLES
+  bgnotify
+  brew
+  cabal
+  common-aliases
+  colored-man-pages
+  command-not-found
+  dotenv
+  encode64
+  gem
+  git
+  git-extras
+  gitfast
+  github
+  golang
+  httpie
+  jira
+  nvm
+  pip
+  pylint
+  python
+  rails
+  ruby
+  tmux
+  vi-mode
+  web-search
+  yarn
+  zsh_reload
+
+  psprint/zsh-navigation-tools
+  zsh-users/zsh-autosuggestions
+  zsh-users/zsh-syntax-highlighting
+EOBUNDLES
+
+antigen theme bhilburn/powerlevel9k powerlevel9k
+
+antigen apply
