@@ -12,7 +12,6 @@ plugins=(
   cabal
   common-aliases
   colored-man-pages
-  command-not-found
   dotenv
   encode64
   gem
@@ -39,7 +38,6 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 eval $(thefuck --alias)
-eval $(brew command-not-found-init)
 
 # User configuration
 
