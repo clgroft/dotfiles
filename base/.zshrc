@@ -29,6 +29,7 @@ plugins=(
   rails
   ruby
   tmux
+  urltools
   vi-mode
   web-search
   yarn
