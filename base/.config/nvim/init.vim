@@ -170,6 +170,9 @@ call minpac#add('neovimhaskell/haskell-vim')
 call minpac#add('alx741/vim-hindent')
 call minpac#add('parsonsmatt/intero-neovim')
 
+" Load all packages in case local.vim wants to use them
+packloadall
+
 " Highlight the column just past maximum line length
 set cc=+1
 
