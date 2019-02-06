@@ -170,6 +170,10 @@ call minpac#add('neovimhaskell/haskell-vim')
 call minpac#add('alx741/vim-hindent')
 call minpac#add('parsonsmatt/intero-neovim')
 
+" Scheme
+" ------
+autocmd filetype lisp,scheme,art setlocal equalprg=scmindent.rkt
+
 " Load all packages in case local.vim wants to use them
 packloadall
 
