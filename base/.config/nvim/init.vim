@@ -102,6 +102,10 @@ call minpac#add('w0rp/ale')
 " Fix runaway autocomplete
 set completeopt=menu,menuone,preview,noselect,noinsert
 
+" vim-slime (send code/tests to Neovim terminal)
+call minpac#add('jpalardy/vim-slime')
+let g:slime_target = "neovim"
+
 " File handling
 " -------------
 
