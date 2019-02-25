@@ -102,9 +102,9 @@ call minpac#add('w0rp/ale')
 " Fix runaway autocomplete
 set completeopt=menu,menuone,preview,noselect,noinsert
 
-" vim-slime (send code/tests to Neovim terminal)
+" vim-slime (send code/tests to tmux pane)
 call minpac#add('jpalardy/vim-slime')
-let g:slime_target = "neovim"
+let g:slime_target = "tmux"
 
 " File handling
 " -------------
@@ -174,9 +174,17 @@ call minpac#add('neovimhaskell/haskell-vim')
 call minpac#add('alx741/vim-hindent')
 call minpac#add('parsonsmatt/intero-neovim')
 
-" Scheme
-" ------
+" Idris
+" -----
+call minpac#add('idris-hackers/idris-vim')
+
+" Scheme/Racket/Lisp
+" ------------------
 autocmd filetype lisp,scheme,art setlocal equalprg=scmindent.rkt
+
+" Racket
+" ------
+call minpac#add('wlangstroth/vim-racket')
 
 " Load all packages in case local.vim wants to use them
 packloadall
