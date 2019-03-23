@@ -5,6 +5,7 @@ set nu
 
 " optional but recommended (some use " " instead)
 let mapleader=","
+let maplocalleader=","
 " clear search highlights
 nmap <Leader><CR> :nohlsearch<cr>
 
@@ -88,6 +89,8 @@ call minpac#add('tpope/vim-sleuth')
 call minpac#add('kana/vim-textobj-user')
 " Create text objects for code comments (ic, ac, aC)
 call minpac#add('glts/vim-textobj-comment')
+" Transition between single- and multi-line constructs
+call minpac#add('AndrewRadev/splitjoin.vim')
 
 " Code editing
 " ------------
