@@ -9,6 +9,7 @@ SPACESHIP_EXIT_CODE_SHOW=true
 plugins=(
   bgnotify
   brew
+  bundler
   cabal
   common-aliases
   colored-man-pages
@@ -76,6 +77,9 @@ export PATH="$PATH:$HOME/bin"
 export PATH="$PATH:$HOME/.rvm/bin"
 alias gacm="gaa && gcmsg"
 alias exa="exa -lh --git"
+
+alias pg_start="launchctl load ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist"
+alias pg_stop="launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist"
 
 source /usr/local/share/zsh-navigation-tools/zsh-navigation-tools.plugin.zsh
 source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
