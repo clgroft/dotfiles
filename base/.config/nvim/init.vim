@@ -30,10 +30,10 @@ set background=dark
 colorscheme one
 
 " Custom statusline
-call minpac#add('vim-airline/vim-airline')
-call minpac#add('vim-airline/vim-airline-themes')
-let g:airline_powerline_fonts = 1
-let g:airline_theme = 'one'
+" call minpac#add('vim-airline/vim-airline')
+" call minpac#add('vim-airline/vim-airline-themes')
+" let g:airline_powerline_fonts = 1
+" let g:airline_theme = 'one'
 
 " better (?) syntax highlighting
 call minpac#add('sheerun/vim-polyglot')
@@ -50,8 +50,8 @@ let g:rainbow_active = 0
 " ----------
 
 " Delay arrows, hjkl, etc.
-call minpac#add('takac/vim-hardtime')
-let g:hardtime_default_on = 1
+" call minpac#add('takac/vim-hardtime')
+" let g:hardtime_default_on = 1
 
 " Use fast search tool from vim command line
 call minpac#add('mileszs/ack.vim')
