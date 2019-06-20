@@ -4,6 +4,8 @@ Example setup for macOS, zsh, VimR
 ## Manual installs (incomplete)
 
 * [Homebrew](https://brew.sh/)
+     - then everything (?) in all_brews
+* [Oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)
 * [fzf](https://github.com/junegunn/fzf): `brew install fzf && $(brew --prefix)/opt/fzf/install`
 * [Neovim](https://neovim.io/) and [VimR](http://vimr.org/):
   `brew install neovim && brew cask install vimr`
