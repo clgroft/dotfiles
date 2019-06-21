@@ -29,4 +29,4 @@ Within `nvim`/VimR (don't worry about "can't find theme" the first time):
 ```
 and restart the editor.
 
-Also map capslock to ^ (Control) in System Preferences.
+Also map capslock to Escape in System Preferences (because Neovim and touchbar).
