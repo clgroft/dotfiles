@@ -30,10 +30,11 @@ set background=dark
 colorscheme one
 
 " Custom statusline
-" call minpac#add('vim-airline/vim-airline')
-" call minpac#add('vim-airline/vim-airline-themes')
-" let g:airline_powerline_fonts = 1
-" let g:airline_theme = 'one'
+" -----------------
+call minpac#add('vim-airline/vim-airline')
+call minpac#add('vim-airline/vim-airline-themes')
+let g:airline_powerline_fonts = 1
+let g:airline_theme = 'one'
 
 " better (?) syntax highlighting
 call minpac#add('sheerun/vim-polyglot')
@@ -45,6 +46,9 @@ call minpac#add('bronson/vim-trailing-whitespace')
 " if I start doing Lisp development
 call minpac#add('luochen1990/rainbow')
 let g:rainbow_active = 0
+
+" Filetype glyphs
+call minpac#add('ryanoasis/vim-devicons')
 
 " Navigation
 " ----------
