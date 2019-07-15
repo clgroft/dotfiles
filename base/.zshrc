@@ -29,6 +29,7 @@ plugins=(
   python
   rails
   ruby
+  rust
   tmux
   urltools
   vi-mode

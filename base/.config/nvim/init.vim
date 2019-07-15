@@ -62,6 +62,8 @@ endif
 
 " % matches virtual delimiters (do/end in Ruby, HTML/JSX tags, etc.)
 runtime macros/matchit.vim
+" Automatically manage ctags files
+call minpac#add('ludovicchabant/vim-gutentags')
 " Display ctags in a window, by scope
 call minpac#add('majutsushi/tagbar')
 
@@ -102,8 +104,12 @@ inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 " Linting/autocomplete/etc.
 let g:ale_completion_enabled = 1
 call minpac#add('w0rp/ale')
+set omnifunc=ale#completion#OmniFunc
 " Fix runaway autocomplete
 set completeopt=menu,menuone,preview,noselect,noinsert
+
+let g:ale_linters = {'rust': ['rls']}
+let g:ale_fixers = {'rust': ['rustfmt']}
 
 " vim-slime (send code/tests to tmux pane)
 call minpac#add('jpalardy/vim-slime')
@@ -188,6 +194,10 @@ autocmd filetype lisp,scheme,art setlocal equalprg=scmindent.rkt
 " Racket
 " ------
 call minpac#add('wlangstroth/vim-racket')
+
+" Rust
+" ----
+call minpac#add('rust-lang/rust.vim')
 
 " Load all packages in case local.vim wants to use them
 packloadall
