@@ -1,7 +1,13 @@
 " filetype-specific indenting and plugins
 filetype plugin indent on
 " turn on linenumbers
-set nu
+set nu rnu
+:augroup numbertoggle
+:  autocmd!
+:  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+:  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+:augroup END
+
 
 " optional but recommended (some use " " instead)
 let mapleader=","
@@ -23,21 +29,14 @@ call minpac#add('k-takata/minpac', {'type': 'opt'})
 " Make external jobs run in tmux/iTerm/etc.
 call minpac#add('tpope/vim-dispatch')
 
-" Appearance
-" ----------
-call minpac#add('rakr/vim-one')
-set background=dark
-colorscheme one
-
 " Custom statusline
 " -----------------
 call minpac#add('vim-airline/vim-airline')
 call minpac#add('vim-airline/vim-airline-themes')
 let g:airline_powerline_fonts = 1
-let g:airline_theme = 'one'
 
 " better (?) syntax highlighting
-call minpac#add('sheerun/vim-polyglot')
+" call minpac#add('sheerun/vim-polyglot')
 " Highlight and :FixWhitespace
 call minpac#add('bronson/vim-trailing-whitespace')
 
@@ -53,10 +52,8 @@ call minpac#add('ryanoasis/vim-devicons')
 " Navigation
 " ----------
 
-" Delay arrows, hjkl, etc.
-" call minpac#add('takac/vim-hardtime')
-" let g:hardtime_default_on = 1
-
+" Display source code navigation in a sidebar
+call minpac#add('majutsushi/tagbar')
 " Use fast search tool from vim command line
 call minpac#add('mileszs/ack.vim')
 " Use a much faster search tool
@@ -66,10 +63,6 @@ endif
 
 " % matches virtual delimiters (do/end in Ruby, HTML/JSX tags, etc.)
 runtime macros/matchit.vim
-" Automatically manage ctags files
-call minpac#add('ludovicchabant/vim-gutentags')
-" Display ctags in a window, by scope
-call minpac#add('majutsushi/tagbar')
 
 " Text editing
 " ------------
@@ -102,22 +95,29 @@ call minpac#add('AndrewRadev/splitjoin.vim')
 " ------------
 
 " Autocomplete
-" call minpac#add('Shougo/deoplete.nvim')
+call minpac#add('Shougo/deoplete.nvim')
+let g:deoplete#enable_at_startup = 1
 " Make <tab> do the right thing wrt autocomplete lists
-inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+" inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 " Linting/autocomplete/etc.
-let g:ale_completion_enabled = 1
-call minpac#add('w0rp/ale')
-set omnifunc=ale#completion#OmniFunc
-" Fix runaway autocomplete
-set completeopt=menu,menuone,preview,noselect,noinsert
-
-let g:ale_linters = {'rust': ['rls']}
-let g:ale_fixers = {'rust': ['rustfmt']}
+call minpac#add('dense-analysis/ale')
+let g:ale_sign_error = '⤫'
+let g:ale_sign_warning = '⚠'" Enable integration with airline.
+let g:airline#extensions#ale#enabled = 1
 
 " vim-slime (send code/tests to tmux pane)
 call minpac#add('jpalardy/vim-slime')
 let g:slime_target = "tmux"
+
+" Snippets
+call minpac#add('Shougo/neosnippet.vim')
+call minpac#add('Shougo/neosnippet-snippets')
+let g:neosnippet#enable_completed_snippet = 1
+imap <C-k> <Plug>(neosnippet_expand_or_jump)
+smap <C-k> <Plug>(neosnippet_expand_or_jump)
+xmap <C-k> <Plug>(neosnippet_expand_target)
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+      \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 
 " File handling
 " -------------
@@ -132,6 +132,27 @@ call minpac#add('tpope/vim-eunuch')
 call minpac#add('tpope/vim-fugitive')
 " Show diff in gutter; can also stage/undo by chunks
 call minpac#add('airblade/vim-gitgutter')
+" Interact with git log
+call minpac#add('kablamo/vim-git-log')
+
+" Go
+" --
+
+call minpac#add('fatih/vim-go')
+call minpac#add('deoplete-plugins/deoplete-go')
+au FileType go set noexpandtab shiftwidth=4 softtabstop=4 tabstop=4
+let g:go_highlight_build_constraints = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_types = 1
+let g:go_auto_sameids = 1
+let g:go_fmt_command = "goimports"
+let g:go_auto_type_info = 1
+let g:go_snippet_engine = "neosnippet"
 
 " Ruby/Rails
 " ----------
@@ -162,9 +183,6 @@ call minpac#add('pangloss/vim-javascript')
 let g:javascript_plugin_flow = 1
 " Flow autocomplete for deoplete
 " call minpac#add('wokalski/autocomplete-flow')
-" call minpac#add('Shougo/neosnippet')
-" call minpac#add('Shougo/neosnippet-snippets')
-" let g:neosnippet#enable_completed_snippet = 1
 
 " Syntax highlighting for JSX
 call minpac#add('mxw/vim-jsx')
@@ -185,7 +203,6 @@ call minpac#add('leshill/vim-json')
 " -------
 call minpac#add('neovimhaskell/haskell-vim')
 call minpac#add('alx741/vim-hindent')
-call minpac#add('parsonsmatt/intero-neovim')
 
 " Idris
 " -----

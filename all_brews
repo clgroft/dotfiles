@@ -90,6 +90,7 @@ scala
 scipy
 shared-mime-info
 socat
+source-highlight
 sphinx-doc
 springboot
 sqlite

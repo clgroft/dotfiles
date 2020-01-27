@@ -15,6 +15,7 @@ plugins=(
   colored-man-pages
   dotenv
   encode64
+  gcloud
   gem
   git
   git-extras
@@ -23,6 +24,7 @@ plugins=(
   golang
   httpie
   jira
+  kubectl
   nvm
   pip
   pylint
@@ -30,6 +32,7 @@ plugins=(
   rails
   ruby
   rust
+  terraform
   tmux
   urltools
   vi-mode
@@ -65,6 +68,10 @@ if [ -f /usr/local/opt/nvm/nvm.sh ]; then
   source /usr/local/opt/nvm/nvm.sh
 fi
 
+export LESSOPEN="| src-hilite-lesspipe.sh %s"
+export LESS=" -R "
+
+export PATH="$PATH:$HOME/devel/go/bin"
 export PATH="$PATH:$HOME/.cabal/bin"
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/bin"
@@ -85,5 +92,8 @@ alias pg_stop="launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.postgresql.
 source /usr/local/share/zsh-navigation-tools/zsh-navigation-tools.plugin.zsh
 source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
+source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
 
 # zprof
