@@ -39,6 +39,7 @@ let g:airline_powerline_fonts = 1
 " call minpac#add('sheerun/vim-polyglot')
 " Highlight and :FixWhitespace
 call minpac#add('bronson/vim-trailing-whitespace')
+nmap <Leader>w :FixWhitespace<cr>
 
 " Rainbow delimiters (easier to pick out matching delimiters)
 " I leave this off by default, but may change my mind
@@ -97,8 +98,15 @@ call minpac#add('AndrewRadev/splitjoin.vim')
 " Autocomplete
 call minpac#add('Shougo/deoplete.nvim')
 let g:deoplete#enable_at_startup = 1
+function! Multiple_cursors_before()
+  let b:deoplete_disable_auto_complete = 1
+endfunction
+function! Multiple_cursors_after()
+  let b:deoplete_disable_auto_complete = 0
+endfunction
 " Make <tab> do the right thing wrt autocomplete lists
 " inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+
 " Linting/autocomplete/etc.
 call minpac#add('dense-analysis/ale')
 let g:ale_sign_error = '⤫'
@@ -153,6 +161,14 @@ let g:go_auto_sameids = 1
 let g:go_fmt_command = "goimports"
 let g:go_auto_type_info = 1
 let g:go_snippet_engine = "neosnippet"
+au FileType go nmap <leader>gd  :GoDeclsDir<cr>
+au FileType go nmap <leader>ga  <Plug>(go-alternate-edit)
+au FileType go nmap <leader>gah <Plug>(go-alternate-split)
+au FileType go nmap <leader>gav <Plug>(go-alternate-vertical)
+au FileType go nmap <leader>gt  :GoTest -short<cr>
+au FileType go nmap <leader>gct :GoCoverageToggle -short<cr>
+au FileType go nmap <C-]>       <Plug>(go-def)
+au FileType go nmap <leader>gat :GoAddTags<cr>
 
 " Ruby/Rails
 " ----------
