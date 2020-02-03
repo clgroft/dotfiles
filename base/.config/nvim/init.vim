@@ -1,15 +1,14 @@
 " filetype-specific indenting and plugins
 filetype plugin indent on
-" turn on linenumbers
-set nu rnu
+
+" turn on linenumbers (hybrid when editing & focused, absolute otherwise)
+set number relativenumber
 :augroup numbertoggle
 :  autocmd!
 :  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
 :  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
 :augroup END
 
-
-" optional but recommended (some use " " instead)
 let mapleader=","
 let maplocalleader=","
 " clear search highlights
