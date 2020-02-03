@@ -11,8 +11,8 @@ plugins=(
   brew
   bundler
   cabal
-  common-aliases
   colored-man-pages
+  common-aliases
   dotenv
   encode64
   gcloud
