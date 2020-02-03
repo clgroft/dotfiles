@@ -123,8 +123,9 @@ let g:neosnippet#enable_completed_snippet = 1
 imap <C-k> <Plug>(neosnippet_expand_or_jump)
 smap <C-k> <Plug>(neosnippet_expand_or_jump)
 xmap <C-k> <Plug>(neosnippet_expand_target)
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-      \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+if has('conceal')
+  set conceallevel=2 concealcursor=niv
+endif
 
 " File handling
 " -------------
@@ -147,6 +148,7 @@ call minpac#add('kablamo/vim-git-log')
 
 call minpac#add('fatih/vim-go')
 call minpac#add('deoplete-plugins/deoplete-go')
+call minpac#add('sebdah/vim-delve')
 au FileType go set noexpandtab shiftwidth=4 softtabstop=4 tabstop=4
 let g:go_highlight_build_constraints = 1
 let g:go_highlight_extra_types = 1
@@ -160,6 +162,7 @@ let g:go_auto_sameids = 1
 let g:go_fmt_command = "goimports"
 let g:go_auto_type_info = 1
 let g:go_snippet_engine = "neosnippet"
+let g:go_echo_command_info = 1
 au FileType go nmap <leader>gd  :GoDeclsDir<cr>
 au FileType go nmap <leader>ga  <Plug>(go-alternate-edit)
 au FileType go nmap <leader>gah <Plug>(go-alternate-split)
@@ -167,6 +170,7 @@ au FileType go nmap <leader>gav <Plug>(go-alternate-vertical)
 au FileType go nmap <leader>gt  :GoTest -short<cr>
 au FileType go nmap <leader>gct :GoCoverageToggle -short<cr>
 au FileType go nmap <C-]>       <Plug>(go-def)
+au FileType go nmap <leader>gdv <Plug>(go-def-vertical)
 au FileType go nmap <leader>gat :GoAddTags<cr>
 
 " Ruby/Rails
