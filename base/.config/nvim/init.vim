@@ -170,7 +170,7 @@ call minpac#add('slim-template/vim-slim')
 call minpac#add('tpope/vim-dadbod')
 " r indicates current Ruby block
 call minpac#add('nelstrom/vim-textobj-rubyblock')
-" call minpac#add('fishbullet/deoplete-ruby')
+call minpac#add('fishbullet/deoplete-ruby')
 
 " JS/React
 " --------
@@ -179,7 +179,7 @@ call minpac#add('nelstrom/vim-textobj-rubyblock')
 call minpac#add('pangloss/vim-javascript')
 let g:javascript_plugin_flow = 1
 " Flow autocomplete for deoplete
-" call minpac#add('wokalski/autocomplete-flow')
+call minpac#add('wokalski/autocomplete-flow')
 
 " Syntax highlighting for JSX
 call minpac#add('mxw/vim-jsx')
