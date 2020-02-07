@@ -1,4 +1,4 @@
-let b:ale_linters = ['gobuild']
+let b:ale_linters = ['gobuild', 'golangci-lint']
 set noexpandtab shiftwidth=4 softtabstop=4 tabstop=4
 let g:go_highlight_build_constraints = 1
 let g:go_highlight_extra_types = 1

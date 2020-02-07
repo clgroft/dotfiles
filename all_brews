@@ -20,6 +20,7 @@ git
 git-extras
 glib
 gmp
+golangci/tap/golangci-lint
 gradle
 haskell-stack
 heroku-node
