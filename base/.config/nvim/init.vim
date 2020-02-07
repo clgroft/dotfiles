@@ -109,7 +109,8 @@ endfunction
 " Linting/autocomplete/etc.
 call minpac#add('dense-analysis/ale')
 let g:ale_sign_error = '⤫'
-let g:ale_sign_warning = '⚠'" Enable integration with airline.
+let g:ale_sign_warning = '⚠'
+" Enable integration with airline.
 let g:airline#extensions#ale#enabled = 1
 
 " vim-slime (send code/tests to tmux pane)
