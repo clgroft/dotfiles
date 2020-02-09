@@ -201,13 +201,14 @@ call minpac#add('leshill/vim-json')
 call minpac#add('neovimhaskell/haskell-vim')
 call minpac#add('alx741/vim-hindent')
 
+" Markdown
+" --------
+call minpac#add('godlygeek/tabular')
+call minpac#add('gabrielelana/vim-markdown')
+
 " Idris
 " -----
 call minpac#add('idris-hackers/idris-vim')
-
-" Scheme/Racket/Lisp
-" ------------------
-autocmd filetype lisp,scheme,art setlocal equalprg=scmindent.rkt
 
 " Racket
 " ------
@@ -216,6 +217,10 @@ call minpac#add('wlangstroth/vim-racket')
 " Rust
 " ----
 call minpac#add('rust-lang/rust.vim')
+
+" Scheme/Racket/Lisp
+" ------------------
+autocmd filetype lisp,scheme,art setlocal equalprg=scmindent.rkt
 
 " Load all packages in case local.vim wants to use them
 packloadall
