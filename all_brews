@@ -23,6 +23,7 @@ gmp
 golangci/tap/golangci-lint
 gradle
 haskell-stack
+helm
 heroku-node
 httpie
 hub
@@ -104,6 +105,7 @@ tree
 unibilium
 unrar
 unzip
+watch
 webp
 wget
 wine

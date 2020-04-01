@@ -52,6 +52,12 @@ call minpac#add('ryanoasis/vim-devicons')
 " Navigation
 " ----------
 
+" File system explorer in a sidebar
+call minpac#add('preservim/nerdtree')
+call minpac#add('Xuyuanp/nerdtree-git-plugin')
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in")| NERDTree | endif
+
 " Display source code navigation in a sidebar
 call minpac#add('majutsushi/tagbar')
 " Use fast search tool from vim command line
@@ -96,6 +102,7 @@ call minpac#add('AndrewRadev/splitjoin.vim')
 
 " Autocomplete
 call minpac#add('Shougo/deoplete.nvim')
+
 let g:deoplete#enable_at_startup = 1
 function! Multiple_cursors_before()
   let b:deoplete_disable_auto_complete = 1
@@ -103,6 +110,7 @@ endfunction
 function! Multiple_cursors_after()
   let b:deoplete_disable_auto_complete = 0
 endfunction
+
 " Make <tab> do the right thing wrt autocomplete lists
 " inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
@@ -194,7 +202,7 @@ let g:user_emmet_settings = {
 
 " JSON
 " ----
-call minpac#add('leshill/vim-json')
+call minpac#add('elzr/vim-json')
 
 " Haskell
 " -------
@@ -210,6 +218,14 @@ call minpac#add('gabrielelana/vim-markdown')
 " -----
 call minpac#add('idris-hackers/idris-vim')
 
+" Markdown
+" --------
+call minpac#add('gabrielelana/vim-markdown')
+
+" Scheme/Racket/Lisp
+" ------------------
+autocmd filetype lisp,scheme,art setlocal equalprg=scmindent.rkt
+
 " Racket
 " ------
 call minpac#add('wlangstroth/vim-racket')
@@ -218,12 +234,17 @@ call minpac#add('wlangstroth/vim-racket')
 " ----
 call minpac#add('rust-lang/rust.vim')
 
-" Scheme/Racket/Lisp
-" ------------------
-autocmd filetype lisp,scheme,art setlocal equalprg=scmindent.rkt
+" Terraform
+" ---------
+call minpac#add('hashivim/vim-terraform')
+call minpac#add('juliosueiras/vim-terraform-completion')
+let g:terraform_fmt_on_save=1
+let g:terraform_align=1
 
 " Load all packages in case local.vim wants to use them
 packloadall
+
+call deoplete#custom#option('sources', {'_': ['ale']})
 
 " Highlight the column just past maximum line length
 set cc=+1

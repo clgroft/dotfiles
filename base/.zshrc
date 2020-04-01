@@ -7,6 +7,8 @@ SPACESHIP_TIME_SHOW=true
 SPACESHIP_EXIT_CODE_SHOW=true
 
 plugins=(
+  aws
+  bazel
   bgnotify
   brew
   bundler
@@ -21,7 +23,9 @@ plugins=(
   git-extras
   gitfast
   github
+  globalias
   golang
+  helm
   httpie
   jira
   kubectl
@@ -83,11 +87,22 @@ export PATH="$PATH:$HOME/bin"
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
-alias gacm="gaa && gcmsg"
+
+# Java config
+# export JAVA_HOME=$(/usr/libexec/java_home)
+export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
+
+# Golang config
+export GOPATH=$HOME/workspaces/go
+
+alias gacm="git add --all && git commit -m"
 alias exa="exa -lh --git"
+alias ls="exa -lh --git"
 
 alias pg_start="launchctl load ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist"
 alias pg_stop="launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist"
+
+alias -s pdf=open
 
 source /usr/local/share/zsh-navigation-tools/zsh-navigation-tools.plugin.zsh
 source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
