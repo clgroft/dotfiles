@@ -101,40 +101,40 @@ call minpac#add('AndrewRadev/splitjoin.vim')
 " ------------
 
 " Autocomplete
-call minpac#add('Shougo/deoplete.nvim')
-
-let g:deoplete#enable_at_startup = 1
-function! Multiple_cursors_before()
-  let b:deoplete_disable_auto_complete = 1
-endfunction
-function! Multiple_cursors_after()
-  let b:deoplete_disable_auto_complete = 0
-endfunction
+" call minpac#add('Shougo/deoplete.nvim')
+"
+" let g:deoplete#enable_at_startup = 1
+" function! Multiple_cursors_before()
+"   let b:deoplete_disable_auto_complete = 1
+" endfunction
+" function! Multiple_cursors_after()
+"   let b:deoplete_disable_auto_complete = 0
+" endfunction
 
 " Make <tab> do the right thing wrt autocomplete lists
 " inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
 " Linting/autocomplete/etc.
-call minpac#add('dense-analysis/ale')
-let g:ale_sign_error = '⤫'
-let g:ale_sign_warning = '⚠'
-" Enable integration with airline.
-let g:airline#extensions#ale#enabled = 1
+" call minpac#add('dense-analysis/ale')
+" let g:ale_sign_error = '⤫'
+" let g:ale_sign_warning = '⚠'
+" " Enable integration with airline.
+" let g:airline#extensions#ale#enabled = 1
 
 " vim-slime (send code/tests to tmux pane)
 call minpac#add('jpalardy/vim-slime')
 let g:slime_target = "tmux"
 
 " Snippets
-call minpac#add('Shougo/neosnippet.vim')
-call minpac#add('Shougo/neosnippet-snippets')
-let g:neosnippet#enable_completed_snippet = 1
-imap <C-k> <Plug>(neosnippet_expand_or_jump)
-smap <C-k> <Plug>(neosnippet_expand_or_jump)
-xmap <C-k> <Plug>(neosnippet_expand_target)
-if has('conceal')
-  set conceallevel=2 concealcursor=niv
-endif
+" call minpac#add('Shougo/neosnippet.vim')
+" call minpac#add('Shougo/neosnippet-snippets')
+" let g:neosnippet#enable_completed_snippet = 1
+" imap <C-k> <Plug>(neosnippet_expand_or_jump)
+" smap <C-k> <Plug>(neosnippet_expand_or_jump)
+" xmap <C-k> <Plug>(neosnippet_expand_target)
+" if has('conceal')
+"   set conceallevel=2 concealcursor=niv
+" endif
 
 " File handling
 " -------------
@@ -156,7 +156,7 @@ call minpac#add('kablamo/vim-git-log')
 " --
 
 call minpac#add('fatih/vim-go')
-call minpac#add('deoplete-plugins/deoplete-go')
+" call minpac#add('deoplete-plugins/deoplete-go')
 call minpac#add('sebdah/vim-delve')
 
 " Ruby/Rails
@@ -178,7 +178,7 @@ call minpac#add('slim-template/vim-slim')
 call minpac#add('tpope/vim-dadbod')
 " r indicates current Ruby block
 call minpac#add('nelstrom/vim-textobj-rubyblock')
-call minpac#add('fishbullet/deoplete-ruby')
+" call minpac#add('fishbullet/deoplete-ruby')
 
 " JS/React
 " --------
@@ -187,7 +187,7 @@ call minpac#add('fishbullet/deoplete-ruby')
 call minpac#add('pangloss/vim-javascript')
 let g:javascript_plugin_flow = 1
 " Flow autocomplete for deoplete
-call minpac#add('wokalski/autocomplete-flow')
+" call minpac#add('wokalski/autocomplete-flow')
 
 " Syntax highlighting for JSX
 call minpac#add('mxw/vim-jsx')
@@ -244,7 +244,7 @@ let g:terraform_align=1
 " Load all packages in case local.vim wants to use them
 packloadall
 
-call deoplete#custom#option('sources', {'_': ['ale']})
+" call deoplete#custom#option('sources', {'_': ['ale']})
 
 " Highlight the column just past maximum line length
 set cc=+1
