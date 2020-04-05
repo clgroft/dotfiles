@@ -75,6 +75,10 @@ fi
 export LESSOPEN="| src-hilite-lesspipe.sh %s"
 export LESS=" -R "
 
+# Golang config
+export GOPATH=$HOME/devel/go
+export GOBIN=$GOPATH/bin
+
 export PATH="$PATH:$HOME/devel/go/bin"
 export PATH="$PATH:$HOME/.cabal/bin"
 export PATH="$PATH:$HOME/.local/bin"
@@ -87,13 +91,6 @@ export PATH="$PATH:$HOME/bin"
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
-
-# Java config
-# export JAVA_HOME=$(/usr/libexec/java_home)
-export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
-
-# Golang config
-export GOPATH=$HOME/workspaces/go
 
 alias gacm="git add --all && git commit -m"
 alias exa="exa -lh --git"
