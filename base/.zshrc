@@ -78,8 +78,8 @@ export LESS=" -R "
 # Golang config
 export GOPATH=$HOME/devel/go
 export GOBIN=$GOPATH/bin
+export PATH="$PATH:$GOBIN"
 
-export PATH="$PATH:$HOME/devel/go/bin"
 export PATH="$PATH:$HOME/.cabal/bin"
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/bin"
