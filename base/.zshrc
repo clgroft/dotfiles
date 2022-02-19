@@ -3,6 +3,7 @@
 export ZSH=~/.oh-my-zsh
 
 ZSH_THEME="spaceship"
+SPACESHIP_BATTERYSHOW=always
 SPACESHIP_TIME_SHOW=true
 SPACESHIP_EXIT_CODE_SHOW=true
 
@@ -23,7 +24,6 @@ plugins=(
   git-extras
   gitfast
   github
-  globalias
   golang
   helm
   httpie
@@ -60,7 +60,7 @@ eval $(thefuck --alias)
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'
 else
-  export EDITOR='nvim' # vimr isn't quite working the way I want
+  export EDITOR='emacsclient -c'
 fi
 
 [ -f ~/.iterm2_shell_integration.zsh ] && source ~/.iterm2_shell_integration.zsh
@@ -75,6 +75,8 @@ fi
 export LESSOPEN="| src-hilite-lesspipe.sh %s"
 export LESS=" -R "
 
+export PATH="/usr/local/opt/texinfo/bin:$PATH"
+
 # Golang config
 export GOPATH=$HOME/devel/go
 export GOBIN=$GOPATH/bin
@@ -83,15 +85,16 @@ export PATH="$PATH:$GOBIN"
 export PATH="$PATH:$HOME/.cabal/bin"
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/bin"
+export PATH="$PATH:$HOME/.emacs.d/bin"
+
+# export BOOSTROOT="$HOME/devel/cppinclude/boost_1_66_0/"
+# export CPLUS_INCLUDE_PATH="$BOOSTROOT"
 
 # ~/.zshrc_local should contain DEFAULT_USER and GITHUB_USERNAME
 [ -f ~/.zshrc_local ] && source ~/.zshrc_local
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
-
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
 
 alias gacm="git add --all && git commit -m"
 alias exa="exa -lh --git"
@@ -106,7 +109,8 @@ source /usr/local/share/zsh-navigation-tools/zsh-navigation-tools.plugin.zsh
 source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
-source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
-
 # zprof
+# if [ -e /Users/clgroft/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/clgroft/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+[ -f "/Users/clgroft/.ghcup/env" ] && source "/Users/clgroft/.ghcup/env" # ghcup-env
+
+eval "$(pyenv init -)"
