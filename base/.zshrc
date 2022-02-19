@@ -93,9 +93,6 @@ export PATH="$PATH:$HOME/.emacs.d/bin"
 # ~/.zshrc_local should contain DEFAULT_USER and GITHUB_USERNAME
 [ -f ~/.zshrc_local ] && source ~/.zshrc_local
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
-
 alias gacm="git add --all && git commit -m"
 alias exa="exa -lh --git"
 alias ls="exa -lh --git"
