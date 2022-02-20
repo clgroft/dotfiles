@@ -3765,6 +3765,28 @@
           }
         }
       }
+    },
+    "tap": {
+      "railwaycat/emacsmacport": {
+        "revision": "09504b43dffcaba7ee321d1ad3343e678e97b4a4"
+      },
+      "homebrew/cask-fonts": {
+        "revision": "a723981560f566453a2a22c2564caf5288888b73"
+      }
+    },
+    "cask": {
+      "emacs-mac": {
+        "version": "emacs-27.2-mac-8.3.1",
+        "options": {
+          "full_name": "emacs-mac"
+        }
+      },
+      "font-fira-code-nerd-font": {
+        "version": "2.1.0",
+        "options": {
+          "full_name": "font-fira-code-nerd-font"
+        }
+      }
     }
   },
   "system": {
@@ -3772,8 +3794,8 @@
       "monterey": {
         "HOMEBREW_VERSION": "3.3.15",
         "HOMEBREW_PREFIX": "/usr/local",
-        "Homebrew/homebrew-core": "5197eb419eb2ba08e145206d7b6015119da3a52b",
-        "CLT": "12.5.0.22.9",
+        "Homebrew/homebrew-core": "d332846f2c51ed0fcfa19aba4aa33ab0ad85ceb5",
+        "CLT": "13.0.0.0.1.1627064638",
         "Xcode": "13.2.1",
         "macOS": "12.2.1"
       }

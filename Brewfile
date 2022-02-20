@@ -96,4 +96,7 @@ brew "zsh-navigation-tools"
 brew "zsh-syntax-highlighting"
 
 tap "railwaycat/emacsmacport"
-brew "emacs-mac"
+cask "emacs-mac"
+
+tap "homebrew/cask-fonts"
+cask "font-fira-code-nerd-font"
