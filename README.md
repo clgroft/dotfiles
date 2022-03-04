@@ -6,7 +6,7 @@ Example setup for macOS, zsh, Doom Emacs
 * [iTerm2](https://iterm2.com/)
 * [Homebrew](https://brew.sh/)
 * [Oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)
-* [Doom Emacs](https://github.com/hlissner/doom-emacs) and [configuration](https://github.com/clgroft/doom.d)
+* [Doom Emacs](https://github.com/hlissner/doom-emacs)
 
 Then:
 ```
