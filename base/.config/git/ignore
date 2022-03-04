@@ -14,3 +14,4 @@
 
 # Python bytecode
 *.pyc
+*.rubocop.yml
