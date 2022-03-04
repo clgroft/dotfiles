@@ -1,0 +1,308 @@
+#+title: Doom Emacs Config
+#+author: Chad Groft
+#+email: chad.groft@hey.com
+#+property: header-args :tangle yes :cache yes :results silent :padline no :lexical yes
+
+* Lexical binding
+Should make =config.el= load faster.
+#+BEGIN_SRC emacs-lisp
+;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
+#+END_SRC
+
+* Global settings
+** Who am I?
+Some functionality uses this to identify you, e.g. GPG configuration, email clients, file templates
+and snippets.
+#+BEGIN_SRC emacs-lisp
+(setq user-full-name "Chad Groft"
+      user-mail-address "chad.groft@hey.com")
+#+END_SRC
+
+** Basics
+Losing work is bad and ellipsis characters look nice.
+#+BEGIN_SRC emacs-lisp
+(setq auto-save-default t
+      truncate-string-ellipsis "…")
+#+END_SRC
+
+** Nice additions to modeline
+#+BEGIN_SRC emacs-lisp
+(display-time-mode)
+(unless (equal "Battery status not available" (battery))
+  (display-battery-mode))
+#+END_SRC
+
+** Global subword mode
+CamelCaseWords is 3 words now!
+#+BEGIN_SRC emacs-lisp
+(global-subword-mode)
+#+END_SRC
+
+** Window splits
+I like splits to appear to the right or bottom, depending on the split direction.
+#+BEGIN_SRC emacs-lisp
+(setq evil-vsplit-window-right t
+      evil-split-window-below t)
+#+END_SRC
+
+** Fill column
+80 columns is a little too confining, let's make it 100.
+#+BEGIN_SRC emacs-lisp
+(setq-default fill-column 100)
+#+END_SRC
+
+** Fonts
+Doom exposes five (optional) variables for controlling fonts in Doom. Here
+are the three important ones:
+
++ ~doom-font~
++ ~doom-variable-pitch-font~
++ ~doom-big-font~ — used for ~doom-big-font-mode~; use this for presentations or streaming.
+
+They all accept either a font-spec, font string (~"Input Mono-12"~), or xlfd font string.
+#+BEGIN_SRC emacs-lisp
+(setq doom-font (font-spec :family "Fira Code" :size 14))
+(setq doom-variable-pitch-font (font-spec :family "Overpass" :size 18))
+(setq doom-serif-font (font-spec :family "Noto Serif" :size 18))
+#+END_SRC
+
+** Themes
+There are two ways to load a theme. Both assume the theme is installed and
+available. You can either set `doom-theme' or manually load a theme with the
+`load-theme' function. =doom-one= is the default and I'm fine with it.
+#+BEGIN_SRC emacs-lisp
+(setq doom-theme 'doom-one)
+#+END_SRC
+
+** Org directory
+If you use =org= and don't want your org files in the default location below,
+change ~org-directory~. It must be set before =org= loads!
+#+BEGIN_SRC emacs-lisp
+(setq org-directory "~/org/")
+#+END_SRC
+
+** Display line numbers
+#+BEGIN_SRC emacs-lisp
+(setq display-line-numbers-type t)
+#+END_SRC
+** Insert suit characters
+#+begin_src emacs-lisp
+(map! :leader
+      (:prefix ("i" . "insert")
+       (:prefix ("S" . "suit")
+        :desc "Spades" "s" (lambda () (interactive) (insert "♤"))
+        :desc "Hearts" "h" (lambda () (interactive) (insert "♡"))
+        :desc "Diamonds" "d" (lambda () (interactive) (insert "♢"))
+        :desc "Clubs" "c" (lambda () (interactive) (insert "♧")))))
+#+end_src
+
+* Other configuration
+Here are some additional functions/macros that could help you configure Doom:
+
+- ~load!~ for loading external =*.el= files relative to this one.
+- ~use-package!~ for configuring packages.
+- ~after!~ for running code after a package has loaded.
+- ~add-load-path!~ for adding directories to the ~load-path~, relative to this file. Emacs searches
+  the ~load-path~ when you load packages with ~require~ or ~use-package~.
+- ~map!~ for binding new keys.
+
+To get information about any of these functions/macros, move the cursor over the highlighted symbol
+at press ~K~ (non-evil users must press ~C-c c k~). This will open documentation for it, including
+demos of how they are used.
+
+You can also try ~gd~ (or ~C-c c d~) to jump to their definition and see how they are implemented.
+
+* Kubernetes settings
+#+begin_src emacs-lisp
+;; (use-package! kubernetes :commands (kubernetes-overview))
+;; (use-package! kubernetes-evil :after kubernetes)
+#+end_src
+* File modes
+** Ledger
+I use =legder= for command-line plaintext accounting, but ~ledger-mode~ is helpful too.
+(Actually I do everything in org-mode instead these days.)
+#+BEGIN_SRC emacs-lisp
+(use-package! ledger-mode :mode "\\.dat$")
+(use-package! ledger-mode :mode "\\.db$")
+#+END_SRC
+
+** Agda
+It's common to program Agda in a Markdown literate programming enviroment.
+#+BEGIN_SRC emacs-lisp
+(use-package! agda2-mode :mode "\\.lagda\\.md$")
+#+END_SRC
+
+** Emacs-lisp
+I got really tired of single-quotes being autopaired in config files when I was mostly using them for the quote macro. I'll likely add this to other Lisp major modes if I start seriously using any.
+#+begin_src elisp
+(sp-local-pair 'emacs-lisp-mode "'" nil :actions nil)
+#+end_src
+
+* Org-mode
+** Startup
+I prefer starting with everything folded, as my org-mode files get long. I think I'll also want to see any inline images automatically. The ~org-fragtog~ package takes care of $\LaTeX$ previews automatically, I believe.
+#+begin_src emacs-lisp
+(setq org-startup-folded t
+      org-startup-with-inline-images t
+      org-startup-with-latex-preview t)
+#+end_src
+** Org-clock
+I'm going to try tracking how long it takes for me to get tasks done, and where I end up spending my time. In case there's lots of interrupts, and I expect there will be, I want to make a note of why I stop working on a task when I do.
+#+begin_src emacs-lisp
+(setq org-log-note-clock-out t)
+#+end_src
+** Org-roam
+The only custom setting thus far is for templates for daily, weekly, and monthly logs. (At this time
+I'm really only using daily templates, but I hope to change this, as well as add useful headings to
+each template.)
+#+BEGIN_SRC emacs-lisp
+(add-hook 'after-init-hook 'org-roam-mode)
+(setq org-roam-dailies-capture-templates
+      '(("d" "daily" plain
+         (function org-roam-capture--get-point) ""
+         :immediate-finish t
+         :file-name "dailies/%<%Y-%m-%d>"
+         :head "#+TITLE: %<%Y-%m-%d>")
+        ("w" "weekly" plain
+         (function org-roam-capture--get-point) ""
+         :immediate-finish t
+         :file-name "weeklies/%<%Y-%m-%d>"
+         :head "#+TITLE: %<%Y-%m-%d>")
+        ("m" "monthly" plain
+         (function org-roam-capture--get-point) ""
+         :immediate-finish t
+         :file-name "monthlies/%<%Y-%m>"
+         :head "#+TITLE: %<%Y-%m>")))
+#+END_SRC
+
+** ~org-log-into-drawer~
+Habits in org-mode build up a /lot/ of state transitions. We don't want to look at them most of the
+time, but we still want to keep them around, so let's at least keep them in a logbook that we can
+tab shut.
+#+BEGIN_SRC emacs-lisp
+(setq org-log-into-drawer t)
+#+END_SRC
+
+** ~mixed-pitch-mode~
+Having variable-width fonts in org-mode with fixed-width for code blocks is awesome.
+#+BEGIN_SRC emacs-lisp
+(add-hook 'org-mode-hook 'mixed-pitch-mode)
+#+END_SRC
+
+** ~org-hide-emphasis-markers~ and ~org-appear~
+It's nice to be able to set typefaces with surrounding characters and not see them most of the time,
+but we do want to see them when we're trying to edit them, hence the use of ~org-appear~.
+#+BEGIN_SRC emacs-lisp
+(setq org-hide-emphasis-markers t)
+(use-package! org-appear
+  :hook (org-mode . org-appear-mode)
+  :config
+  (setq org-appear-autoemphasis t
+        org-appear-autosubmarkers t
+        org-appear-autolinks nil)
+  ;; for proper first-time setup, `org-appear--set-elements'
+  ;; needs to be run after other hooks have acted.
+  (run-at-time nil nil #'org-appear--set-elements))
+#+END_SRC
+
+** ~org-fragtog~
+Similarly, seeing the generated symbols for $\LaTeX$ fragments is awesome, unless we're actively trying to edit them. Hence, the ~org-fragtog~ package.
+#+BEGIN_SRC emacs-lisp
+(use-package! org-fragtog
+  :hook (org-mode . org-fragtog-mode))
+#+END_SRC
+
+** ~org-agenda~
+*** ~org-super-agenda~
+I find it helpful to group my actions by context, and I use tags for context. ~org-super-agenda~ makes
+this automatic and makes it easy to filter for exactly what I want to see.
+#+BEGIN_SRC emacs-lisp
+(use-package! org-super-agenda
+  :commands (org-super-agenda-mode))
+(after! org-agenda (org-super-agenda-mode))
+#+END_SRC
+
+*** Configuration variables
+All of these are well-documented. I may wish to add ~org-agenda-skip-scheduled-if-deadline-is-shown~.
+#+BEGIN_SRC emacs-lisp
+(setq
+ org-agenda-skip-scheduled-if-deadline-is-shown   t
+ org-agenda-skip-scheduled-if-done                t
+ org-agenda-skip-deadline-if-done                 t
+ org-agenda-skip-additional-timestamps-same-entry t
+ org-agenda-include-deadlines                     t
+ org-agenda-compact-blocks                        t
+ org-agenda-warning-days                          1
+ ;; org-agenda-tags-column                           100
+ )
+#+END_SRC
+
+*** Custom ~org-super-agenda~ view
+I like to see tasks scheduled for or due today at the top, then tasks I've already started so I get back to them. Below that, I only want to see actions that I haven't explicitly delayed, which are either to be done by me or which I'm waiting for something from someone else. I don't want to see habits — they should appear at the top anyway — and I don't want to see potentially sensitive information or any tasks that have been explicitly scheduled for the future. Beyond that, I want to see tasks I've already decided to do today, then "quick wins" for times when I can't think very hard about what to do, then any remaining tasks sorted by context.
+#+BEGIN_SRC emacs-lisp
+(setq org-agenda-custom-commands
+      '(("o" "Overview"
+         (
+          (agenda "Today"
+                  ((org-agenda-span 'day)
+                   (org-agenda-start-day "0d")))
+          (alltodo "To do"
+                   ((org-agenda-overriding-header "")
+                    (org-super-agenda-groups
+                     '(
+                       (:name "In progress" :todo "STRT")
+                       (:discard (:not (:todo ("TODO" "WAIT"))))
+                       (:discard (:habit))
+                       ;; (:discard (:tag ("agenda-ajay")))
+                       (:discard (:scheduled future))
+                       (:name "First up" :tag "@first")
+                       (:name "Quick wins" :tag "@quickwin")
+                       (:auto-tags t)))))))))
+#+END_SRC
+
+*** Typefaces
+Sets typefaces for tasks in ~org-agenda~. Mostly default, except that past-due tasks are displayed as
+errors.
+#+BEGIN_SRC emacs-lisp
+(setq org-agenda-deadline-faces
+      '((1.001 . error)
+        (1.0 . org-warning)
+        (0.5 . org-upcoming-deadline)
+        (0.0 . org-upcoming-distant-deadline)))
+#+END_SRC
+
+** ~org-babel~
+I haven't played much with this yet, but I know that I want to use modern Python when I use it at
+all.
+#+BEGIN_SRC emacs-lisp
+(setq org-babel-python-command "python3")
+#+END_SRC
+
+** Fonts
+Just giving the title and headings in Org documents a little extra oomph.
+#+BEGIN_SRC emacs-lisp
+(custom-set-faces!
+  '(org-document-title :height 1.2)
+  '(outline-1 :weight extra-bold :height 1.25)
+  '(outline-2 :weight bold :height 1.15)
+  '(outline-3 :weight bold :height 1.12)
+  '(outline-4 :weight semi-bold :height 1.09)
+  '(outline-5 :weight semi-bold :height 1.06)
+  '(outline-6 :weight semi-bold :height 1.03)
+  '(outline-8 :weight semi-bold)
+  '(outline-9 :weight semi-bold))
+#+END_SRC
+* Web-mode
+** Indentation
+#+begin_src emacs-lisp
+(use-package web-mode
+  :custom
+  (web-mode-markup-indent-offset 2)
+  (web-mode-css-indent-offset 2)
+  (web-mode-code-indent-offset 2))
+#+end_src
+** Engine families
+#+begin_src emacs-lisp
+(add-to-list 'web-mode-engines-alist
+             '("jinja" . "/templates/.*\\.html\\'"))
+#+end_src

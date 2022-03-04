@@ -1,0 +1,29 @@
+#+TITLE:   doom.d
+#+DATE:    February 20, 2022
+#+STARTUP: inlineimages nofold
+
+* Table of Contents :TOC_3:noexport:
+- [[#description][Description]]
+  - [[#maintainers][Maintainers]]
+  - [[#plugins][Plugins]]
+
+* Description
+My [[https://github.com/hlissner/doom-emacs][Doom Emacs]] configuration.
+
+** Maintainers
++ @clgroft (Author)
+
+** Plugins
+# A list of linked plugins
++ [[https://orgmode.org/][org-plus-contrib]]
++ [[https://github.com/sabof/org-bullets][org-bullets]]
++ [[https://github.com/TobiasZawada/org-yt][org-yt]]
++ [[https://github.com/sebastiencs/company-box][company-box]]* (=+childframe=)
++ =:lang crystal=
+  + [[https://github.com/brantou/ob-crystal][ob-crystal]]
++ =:lang go=
+  + [[https://github.com/pope/ob-go][ob-go]]
++ =+present=
+  + [[https://github.com/anler/centered-window-mode][centered-window]]
+  + [[https://github.com/takaxp/org-tree-slide][org-tree-slide]]
+  + [[https://gitlab.com/oer/org-re-reveal][org-re-reveal]]
