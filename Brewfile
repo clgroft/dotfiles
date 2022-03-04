@@ -96,7 +96,7 @@ brew "zsh-navigation-tools"
 brew "zsh-syntax-highlighting"
 
 tap "d12frosted/emacs-plus"
-brew "emacs-plus@27"
+brew "emacs-plus@28"
 
 tap "homebrew/cask-fonts"
 cask "font-fira-code-nerd-font"
