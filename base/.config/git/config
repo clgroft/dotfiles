@@ -1,0 +1,47 @@
+[user]
+	name = Chad Groft
+	email = clgroft@gmail.com
+[credential]
+	helper = osxkeychain
+[filter "hawser"]
+	clean = git hawser clean %f
+	smudge = git hawser smudge %f
+	required = true
+[alias]
+	st = status
+	co = checkout
+	ci = commit
+	br = branch
+[push]
+	default = matching
+[core]
+	excludesfile = /Users/clgroft/.config/git/ignore
+	editor = emacsclient -c
+	# pager = diff-so-fancy | less --tabs=4 -RFX
+	pager = delta
+[color]
+	ui = true
+[color "diff-highlight"]
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
+	oldNormal = red bold
+[color "diff"]
+	frag = magenta bold
+	commit = yellow bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse
+	meta = yellow
+[pull]
+	rebase = false
+[init]
+	defaultBranch = main
+[interactive]
+	diffFilter = delta --color-only
+[delta]
+	navigate = true
+[merge]
+	conflictstyle = diff3
+[diff]
+	colorMoved = default
