@@ -16,6 +16,7 @@ cd
 git clone git@github.com:clgroft/dotfiles.git
 cd dotfiles
 brew bundle
+brew autoupdate start
 stow base
 ```
 Also map capslock to Escape in System Preferences (because Doom Emacs).
