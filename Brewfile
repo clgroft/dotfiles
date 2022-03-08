@@ -100,3 +100,5 @@ brew "emacs-plus@28"
 
 tap "homebrew/cask-fonts"
 cask "font-fira-code-nerd-font"
+
+tap "homebrew/autoupdate"
