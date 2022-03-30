@@ -8,7 +8,7 @@ Example setup for macOS, zsh, Doom Emacs
 * [Oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)
 * [Doom Emacs](https://github.com/hlissner/doom-emacs)
 * [Starship prompt](https://starship.rs/)
-* Fonts: [Fira Code](https://fonts.google.com/specimen/Fira+Code), [Noto Serif](https://fonts.google.com/noto/specimen/Noto+Serif), and [Overpass](https://fonts.google.com/noto/specimen/Noto+Serif)
+* Fonts: [Fira Code](https://fonts.google.com/specimen/Fira+Code), [Noto Serif](https://fonts.google.com/noto/specimen/Noto+Serif), and [Overpass](https://fonts.google.com/specimen/Overpass)
 
 Then:
 ```
