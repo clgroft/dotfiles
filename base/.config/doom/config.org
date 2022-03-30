@@ -140,10 +140,10 @@ I got really tired of single-quotes being autopaired in config files when I was 
 
 * Org-mode
 ** Startup
-I prefer starting with everything folded, as my org-mode files get long. I think I'll also want to see any inline images automatically. The ~org-fragtog~ package takes care of $\LaTeX$ previews automatically, I believe.
+I prefer starting with everything folded, as my org-mode files get long. I thought I'd want to see any inline images automatically, but that breaks the first thing. The ~org-fragtog~ package takes care of $\LaTeX$ previews automatically, I believe.
 #+begin_src emacs-lisp
 (setq org-startup-folded t
-      org-startup-with-inline-images t
+      ;; org-startup-with-inline-images t
       org-startup-with-latex-preview t)
 #+end_src
 ** Org-clock

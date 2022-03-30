@@ -30,7 +30,7 @@
 (use-package! agda2-mode :mode "\\.lagda\\.md$")
 (sp-local-pair 'emacs-lisp-mode "'" nil :actions nil)
 (setq org-startup-folded t
-      org-startup-with-inline-images t
+      ;; org-startup-with-inline-images t
       org-startup-with-latex-preview t)
 (setq org-log-note-clock-out t)
 (add-hook 'after-init-hook 'org-roam-mode)
